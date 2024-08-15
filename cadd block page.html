@@ -102,6 +102,38 @@
             background-color: #218838;
         }
 
+        /* Pop-up styles */
+        .hidden {
+            display: none;
+        }
+
+        #popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            text-align: center;
+        }
+
+        #popup button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+
+        #popup button:hover {
+            background: #0056b3;
+        }
+
         /* Responsive design for smaller screens */
         @media (max-width: 768px) {
             .navbar {
@@ -153,8 +185,7 @@
                 <img src="images/product1.jpeg" alt="Product 1">
                 <h3>Product 1</h3>
                 <p>Price: ₹1</p>
-                <a href="<a href="upi://pay?pa=rajvendrarao@okhdfcbank&pn=Your%20Name&mc=0000&tid=prod2&amount=1&cu=INR&url=https%3A%2F%2Fyourwebsite.com%2Fthank-you" class="buy-button">Buy Now</a>
-" class="buy-button">Buy Now</a>
+                <a href="upi://pay?pa=rajvendrarao@okhdfcbank&pn=Your%20Name&mc=0000&tid=prod2&amount=1&cu=INR&url=https%3A%2F%2Fyourwebsite.com%2Fthank-you" class="buy-button">Buy Now</a>
             </div>
             <!-- Product 2 -->
             <div class="product-item">
@@ -167,7 +198,7 @@
             <div class="product-item">
                 <img src="images/product3.jpeg" alt="Product 3">
                 <h3>Product 3</h3>
-                <p>Price: ₹300</p>
+                <p>Price: ₹1</p>
                 <a href="upi://pay?pa=yourupi@bank&pn=Your%20Name&mc=0000&tid=prod3&amount=300&cu=INR&url=https%3A%2F%2Fyourwebsite.com%2Fthank-you" class="buy-button">Buy Now</a>
             </div>
             <!-- Product 4 -->
@@ -221,7 +252,34 @@
             </div>
         </section>
     </main>
+
+    <!-- Pop-up HTML -->
+    <div id="popup" class="hidden">
+        <div>
+            <p>Click the button below to download your file:</p>
+            <a id="downloadButton" href="path/to/your/file.zip" download="filename.zip">
+                <button>Download</button>
+            </a>
+            <button id="closePopup">Close</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const popup = document.getElementById('popup');
+            const closePopup = document.getElementById('closePopup');
+
+            // Show the popup
+            popup.classList.remove('hidden');
+
+            // Close the popup and redirect after a delay
+            closePopup.addEventListener('click', () => {
+                popup.classList.add('hidden');
+                setTimeout(() => {
+                    window.location.href = 'https://caddplans.github.io/Civil-Plans/#contact'; // Replace with your redirection URL
+                }, 300); // Adjust the delay if needed
+            });
+        });
+    </script>
 </body>
 </html>
-
-
