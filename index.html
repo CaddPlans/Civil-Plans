@@ -183,21 +183,20 @@
             <li><a href="#services" aria-label="Services">Services</a></li>
             <li><a href="#contact" aria-label="Contact">Contact</a></li>
             <li><a href="#products" aria-label="Products">Products</a></li>
-
         </ul>
     </nav>
 
     <section class="home-content" id="home">
         <img style="width: 100%;" src="heropic.png" alt="Hero Image">
- <h1 style="margin-top: 40px;" >Welcome to Cadd Plans</h1>
-        <p style="margin-bottom: 40px;" >Discover our range of high-quality services designed to meet your needs. Explore the options below to learn more about what we offer.</p>
+        <h1 style="margin-top: 40px;">Welcome to Cadd Plans</h1>
+        <p style="margin-bottom: 40px;">Discover our range of high-quality services designed to meet your needs. Explore the options below to learn more about what we offer.</p>
 
         <div class="button-container">
             <div class="button-item">
                 <div class="button-label">3D FLOOR VIEW</div>
-                <a href="https://forms.gle/Y8YM1uwkv2CyVNUMA" class="button-text">
+                <a href="#" id="button-1" class="button-text">
                     <img src="3D FLOOR VIEW.jpg" alt="Cadd Blocks">
-                   VIEW MORE
+                    VIEW MORE
                 </a>
             </div>
             <div class="button-item">
@@ -206,7 +205,6 @@
                     <img src="3D ELEVATION.jpg" alt="Get in Touch">
                     VIEW MORE
                 </a>
-
             </div>
             <div class="button-item">
                 <div class="button-label">2D GROUND FLOOR PLAN</div>
@@ -226,7 +224,7 @@
                 <div class="button-label">CADD BLOCKS</div>
                 <a href="cadd block page.html" class="button-text">
                     <img src="cadd block.jpeg" alt="View Portfolio">
-                   VIEW MORE
+                    VIEW MORE
                 </a>
             </div>
             <div class="button-item">
@@ -238,6 +236,12 @@
             </div>
         </div>
     </section>
+
+    <script>
+        document.getElementById('button-1').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the default anchor click behavior
+            window.location.href = window.location.href; // Redirect to the same page
+        });
+    </script>
 </body>
 </html>
-
