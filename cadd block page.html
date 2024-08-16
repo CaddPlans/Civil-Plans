@@ -5,14 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Purchase with User Details</title>
     <style>
-        /* Basic reset for margins and paddings */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
-        /* Styling for the navigation bar */
         .navbar {
             background-color: #333;
             padding: 10px;
@@ -20,27 +17,22 @@
             justify-content: space-between;
             align-items: center;
         }
-
         .navbar .title {
             color: white;
             font-size: 24px;
             font-weight: bold;
         }
-
         .navbar img {
             height: 40px;
             width: auto;
         }
-
         .nav-links {
             list-style-type: none;
             display: flex;
         }
-
         .nav-links li {
             margin: 0 15px;
         }
-
         .nav-links a {
             color: white;
             text-decoration: none;
@@ -48,31 +40,24 @@
             padding: 10px;
             display: block;
         }
-
         .nav-links a:hover {
             background-color: #575757;
             border-radius: 5px;
         }
-
-        /* Styling for the video section */
         .video-section {
             padding: 20px;
             text-align: center;
             background-color: #f4f4f4;
         }
-
         .video-section video {
             max-width: 100%;
             height: auto;
             border-radius: 8px;
         }
-
-        /* Styling for the product section */
         .products {
             padding: 20px;
             background-color: #f4f4f4;
         }
-
         .product-item {
             display: inline-block;
             width: 200px;
@@ -83,23 +68,19 @@
             text-align: left;
             background-color: #fff;
         }
-
         .product-item img {
             width: 100%;
             height: auto;
             border-bottom: 1px solid #ddd;
         }
-
         .product-item h3 {
             font-size: 18px;
             margin: 10px 0;
         }
-
         .product-item p {
             font-size: 16px;
             color: #333;
         }
-
         .buy-button {
             display: inline-block;
             background-color: #28a745;
@@ -109,13 +90,11 @@
             border-radius: 5px;
             font-size: 16px;
             text-align: center;
+            cursor: pointer;
         }
-
         .buy-button:hover {
             background-color: #218838;
         }
-
-        /* Modal styles */
         #modal {
             display: none;
             position: fixed;
@@ -128,7 +107,6 @@
             background-color: rgba(0,0,0,0.4);
             padding-top: 60px;
         }
-
         .modal-content {
             background-color: #fefefe;
             margin: 5% auto;
@@ -136,41 +114,33 @@
             border: 1px solid #888;
             width: 80%;
         }
-
         .close {
             color: #aaa;
             float: right;
             font-size: 28px;
             font-weight: bold;
         }
-
         .close:hover,
         .close:focus {
             color: black;
             text-decoration: none;
             cursor: pointer;
         }
-
-        /* Responsive design for smaller screens */
         @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
                 text-align: center;
             }
-
             .nav-links {
                 flex-direction: column;
                 margin-top: 10px;
             }
-
             .nav-links li {
                 margin: 10px 0;
             }
-
             .products {
                 padding: 10px;
             }
-
             .product-item {
                 width: 100%;
                 margin: 10px 0;
@@ -196,7 +166,6 @@
     </header>
 
     <main>
-        <!-- Video Section -->
         <section class="video-section">
             <h2>How to Buy Our Products</h2>
             <video controls>
@@ -206,77 +175,76 @@
             <p>Watch this video to learn how to purchase our products easily.</p>
         </section>
 
-        <!-- Products Section -->
         <section class="products" id="products">
             <!-- Product 1 -->
             <div class="product-item">
                 <img src="images/product1.jpeg" alt="Product 1">
                 <h3>Product 1</h3>
                 <p>Price: ₹1</p>
-                <button class="buy-button" onclick="showModal('prod1', 1)">Buy Now</button>
+                <button class="buy-button" onclick="showModal('Product 1', 1)">Buy Now</button>
             </div>
             <!-- Product 2 -->
             <div class="product-item">
                 <img src="images/product2.jpeg" alt="Product 2">
                 <h3>Product 2</h3>
                 <p>Price: ₹1</p>
-                <button class="buy-button" onclick="showModal('prod2', 1)">Buy Now</button>
+                <button class="buy-button" onclick="showModal('Product 2', 1)">Buy Now</button>
             </div>
             <!-- Product 3 -->
             <div class="product-item">
                 <img src="images/product3.jpeg" alt="Product 3">
                 <h3>Product 3</h3>
                 <p>Price: ₹300</p>
-                <button class="buy-button" onclick="showModal('prod3', 300)">Buy Now</button>
+                <button class="buy-button" onclick="showModal('Product 3', 300)">Buy Now</button>
             </div>
             <!-- Product 4 -->
             <div class="product-item">
                 <img src="images/product4.jpeg" alt="Product 4">
                 <h3>Product 4</h3>
                 <p>Price: ₹650</p>
-                <button class="buy-button" onclick="showModal('prod4', 650)">Buy Now</button>
+                <button class="buy-button" onclick="showModal('Product 4', 650)">Buy Now</button>
             </div>
             <!-- Product 5 -->
             <div class="product-item">
                 <img src="images/product5.jpeg" alt="Product 5">
                 <h3>Product 5</h3>
                 <p>Price: ₹900</p>
-                <button class="buy-button" onclick="showModal('prod5', 900)">Buy Now</button>
+                <button class="buy-button" onclick="showModal('Product 5', 900)">Buy Now</button>
             </div>
             <!-- Product 6 -->
             <div class="product-item">
                 <img src="images/product6.jpeg" alt="Product 6">
                 <h3>Product 6</h3>
                 <p>Price: ₹1200</p>
-                <button class="buy-button" onclick="showModal('prod6', 1200)">Buy Now</button>
+                <button class="buy-button" onclick="showModal('Product 6', 1200)">Buy Now</button>
             </div>
             <!-- Product 7 -->
             <div class="product-item">
                 <img src="images/product7.jpeg" alt="Product 7">
                 <h3>Product 7</h3>
                 <p>Price: ₹450</p>
-                <button class="buy-button" onclick="showModal('prod7', 450)">Buy Now</button>
+                <button class="buy-button" onclick="showModal('Product 7', 450)">Buy Now</button>
             </div>
             <!-- Product 8 -->
             <div class="product-item">
                 <img src="images/product8.jpeg" alt="Product 8">
                 <h3>Product 8</h3>
                 <p>Price: ₹350</p>
-                <button class="buy-button" onclick="showModal('prod8', 350)">Buy Now</button>
+                <button class="buy-button" onclick="showModal('Product 8', 350)">Buy Now</button>
             </div>
             <!-- Product 9 -->
             <div class="product-item">
                 <img src="images/product9.jpeg" alt="Product 9">
                 <h3>Product 9</h3>
                 <p>Price: ₹800</p>
-                <button class="buy-button" onclick="showModal('prod9', 800)">Buy Now</button>
+                <button class="buy-button" onclick="showModal('Product 9', 800)">Buy Now</button>
             </div>
             <!-- Product 10 -->
             <div class="product-item">
                 <img src="images/product10.jpeg" alt="Product 10">
                 <h3>Product 10</h3>
                 <p>Price: ₹2000</p>
-                <button class="buy-button" onclick="showModal('prod10', 2000)">Buy Now</button>
+                <button class="buy-button" onclick="showModal('Product 10', 2000)">Buy Now</button>
             </div>
         </section>
     </main>
@@ -286,67 +254,57 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <form id="purchase-form">
-                <h2>Enter Your Details</h2>
                 <input type="hidden" id="product-id" value="">
                 <input type="hidden" id="price" value="">
+                <h2>Enter Your Details</h2>
                 <label for="name">Name:</label>
                 <input type="text" id="name" required><br><br>
                 <label for="number">Phone Number:</label>
                 <input type="text" id="number" required><br><br>
                 <label for="email">Email:</label>
                 <input type="email" id="email" required><br><br>
-                <button type="submit">Buy Now</button>
+                <button type="button" onclick="submitForm()">Buy Now</button>
             </form>
         </div>
     </div>
 
     <script>
-        // Function to open the modal and set product details
         function showModal(productId, price) {
             document.getElementById('modal').style.display = 'block';
             document.getElementById('product-id').value = productId;
             document.getElementById('price').value = price;
         }
 
-        // Function to close the modal
         function closeModal() {
             document.getElementById('modal').style.display = 'none';
         }
 
-        // Handle form submission
-        document.getElementById('purchase-form').addEventListener('submit', function(event) {
-            event.preventDefault();
+        function submitForm() {
             const name = document.getElementById('name').value;
             const number = document.getElementById('number').value;
             const email = document.getElementById('email').value;
             const productId = document.getElementById('product-id').value;
             const price = document.getElementById('price').value;
 
-            // Generate a file with user details
-            const fileContent = `Name: ${name}\nPhone Number: ${number}\nEmail: ${email}\nProduct ID: ${productId}\nPrice: ${price}`;
-            const blob = new Blob([fileContent], { type: 'text/plain' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'user_details.txt';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
+            // Save details to localStorage
+            localStorage.setItem('purchaseDetails', JSON.stringify({
+                name: name,
+                number: number,
+                email: email,
+                productId: productId,
+                price: price
+            }));
+
+            // Redirect to UPI payment link
+            const upiLink = `upi://pay?pa=rajvendrarao@okhdfcbank&pn=${encodeURIComponent(name)}&mc=0000&tid=${productId}&amount=${price}&cu=INR&url=https://yourwebsite.com/thank-you`;
+            window.location.href = upiLink;
 
             // Close the modal
             closeModal();
+        }
 
-            // Construct UPI payment link
-            const upiLink = `upi://pay?pa=yourupi@bank&pn=Your%20Name&mc=0000&tid=${productId}&amount=${price}&cu=INR&url=${encodeURIComponent(window.location.href)}`;
-            setTimeout(function() {
-                window.location.href = upiLink;
-            }, 500); // Add a short delay to ensure file download is triggered first
-        });
-
-        // Close modal when clicking on (x)
         document.querySelector('.close').onclick = closeModal;
 
-        // Close modal when clicking outside of it
         window.onclick = function(event) {
             if (event.target === document.getElementById('modal')) {
                 closeModal();
