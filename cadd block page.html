@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Navigation Bar with Logo</title>
+    <title>Single Page Product Details</title>
     <style>
         /* Basic reset for margins and paddings */
         * {
@@ -102,6 +102,38 @@
             background-color: #218838;
         }
 
+        /* Popup styles */
+        .hidden {
+            display: none;
+        }
+
+        #popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            text-align: center;
+        }
+
+        #popup button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+
+        #popup button:hover {
+            background: #0056b3;
+        }
+
         /* Responsive design for smaller screens */
         @media (max-width: 768px) {
             .navbar {
@@ -153,42 +185,43 @@
                 <img src="images/product1.jpeg" alt="Product 1">
                 <h3>Product 1</h3>
                 <p>Price: ₹1</p>
-                <a href="#" class="buy-button" onclick="initiateUPI('product1')">Buy Now</a>
+                <a href="#" class="buy-button" onclick="showProductDetails('Product 1', 'Here is more information about Product 1.')">Buy Now</a>
             </div>
             <!-- Product 2 -->
             <div class="product-item">
                 <img src="images/product2.jpeg" alt="Product 2">
                 <h3>Product 2</h3>
                 <p>Price: ₹1</p>
-                <a href="#" class="buy-button" onclick="initiateUPI('product2')">Buy Now</a>
+                <a href="#" class="buy-button" onclick="showProductDetails('Product 2', 'Here is more information about Product 2.')">Buy Now</a>
             </div>
             <!-- Add more products as needed -->
         </section>
     </main>
 
+    <!-- Popup HTML -->
+    <div id="popup" class="hidden">
+        <div>
+            <h2 id="popupTitle"></h2>
+            <p id="popupDescription"></p>
+            <button id="closePopup">Close</button>
+        </div>
+    </div>
+
     <script>
-        function initiateUPI(productId) {
-            // Store the product ID and set a flag in sessionStorage
-            sessionStorage.setItem('returnFromUPI', 'true');
-            sessionStorage.setItem('productId', productId);
+        function showProductDetails(title, description) {
+            // Set the popup content
+            document.getElementById('popupTitle').innerText = title;
+            document.getElementById('popupDescription').innerText = description;
             
-            // Redirect to the UPI payment link
-            let upiUrl = '';
-
-            switch (productId) {
-                case 'product1':
-                    upiUrl = 'upi://pay?pa=rajvendrarao@okhdfcbank&pn=Your%20Name&mc=0000&tid=prod1&amount=1&cu=INR&url=' + encodeURIComponent(window.location.href);
-                    break;
-                case 'product2':
-                    upiUrl = 'upi://pay?pa=rajvendrarao@okhdfcbank&pn=Your%20Name&mc=0000&tid=prod2&amount=1&cu=INR&url=' + encodeURIComponent(window.location.href);
-                    break;
-                // Add more cases for other products
-                default:
-                    console.error('Unknown product ID');
-            }
-
-            window.location.href = upiUrl;
+            // Show the popup
+            document.getElementById('popup').classList.remove('hidden');
         }
+
+        document.getElementById('closePopup').addEventListener('click', () => {
+            // Hide the popup
+            document.getElementById('popup').classList.add('hidden');
+        });
     </script>
 </body>
 </html>
+
