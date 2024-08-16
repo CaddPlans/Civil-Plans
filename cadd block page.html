@@ -102,38 +102,6 @@
             background-color: #218838;
         }
 
-        /* Pop-up styles */
-        .hidden {
-            display: none;
-        }
-
-        #popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 20px;
-            background: white;
-            border: 1px solid #ccc;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            z-index: 1000;
-            text-align: center;
-        }
-
-        #popup button {
-            background: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 16px;
-            margin: 5px;
-        }
-
-        #popup button:hover {
-            background: #0056b3;
-        }
-
         /* Responsive design for smaller screens */
         @media (max-width: 768px) {
             .navbar {
@@ -198,17 +166,6 @@
         </section>
     </main>
 
-    <!-- Pop-up HTML -->
-    <div id="popup" class="hidden">
-        <div>
-            <p>Click the button below to download your file:</p>
-            <a id="downloadButton" href="path/to/your/file.zip" download="filename.zip">
-                <button>Download</button>
-            </a>
-            <button id="closePopup">Close</button>
-        </div>
-    </div>
-
     <script>
         function initiateUPI(productId) {
             // Store the product ID and set a flag in sessionStorage
@@ -232,24 +189,6 @@
 
             window.location.href = upiUrl;
         }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const popup = document.getElementById('popup');
-            const closePopup = document.getElementById('closePopup');
-
-            // Check if we need to show the pop-up
-            if (sessionStorage.getItem('returnFromUPI') === 'true') {
-                popup.classList.remove('hidden');
-                // Clear the flag
-                sessionStorage.removeItem('returnFromUPI');
-                sessionStorage.removeItem('productId');
-            }
-
-            // Close the popup and perform any additional actions
-            closePopup.addEventListener('click', () => {
-                popup.classList.add('hidden');
-            });
-        });
     </script>
 </body>
 </html>
