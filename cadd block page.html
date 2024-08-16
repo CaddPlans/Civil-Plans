@@ -253,16 +253,17 @@
     <div id="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <form id="purchase-form">
-                <input type="hidden" id="product-id" value="">
-                <input type="hidden" id="price" value="">
+            <form id="purchase-form" action="https://docs.google.com/forms/d/e/1FAIpQLSfP2fvMQfIjkkxYTKL3lV2-AflWelDh3zAnOrKYDKWwgi1wMA/viewform?usp=sf_link" method="POST">
+                <!-- Replace 'YOUR_GOOGLE_FORM_URL' with the actual Google Form action URL -->
+                <input type="hidden" name="entry.YOUR_PRODUCT_ID_ENTRY_ID" id="product-id">
+                <input type="hidden" name="entry.YOUR_PRICE_ENTRY_ID" id="price">
                 <h2>Enter Your Details</h2>
                 <label for="name">Name:</label>
-                <input type="text" id="name" required><br><br>
+                <input type="text" id="name" name="entry.YOUR_NAME_ENTRY_ID" required><br><br>
                 <label for="number">Phone Number:</label>
-                <input type="text" id="number" required><br><br>
+                <input type="text" id="number" name="entry.YOUR_PHONE_NUMBER_ENTRY_ID" required><br><br>
                 <label for="email">Email:</label>
-                <input type="email" id="email" required><br><br>
+                <input type="email" id="email" name="entry.YOUR_EMAIL_ENTRY_ID" required><br><br>
                 <button type="button" onclick="submitForm()">Buy Now</button>
             </form>
         </div>
@@ -286,21 +287,16 @@
             const productId = document.getElementById('product-id').value;
             const price = document.getElementById('price').value;
 
-            // Save details to localStorage
-            localStorage.setItem('purchaseDetails', JSON.stringify({
-                name: name,
-                number: number,
-                email: email,
-                productId: productId,
-                price: price
-            }));
+            // Populate form with values
+            const form = document.getElementById('purchase-form');
+            form.querySelector('input[name="entry.YOUR_NAME_ENTRY_ID"]').value = name;
+            form.querySelector('input[name="entry.YOUR_PHONE_NUMBER_ENTRY_ID"]').value = number;
+            form.querySelector('input[name="entry.YOUR_EMAIL_ENTRY_ID"]').value = email;
+            form.querySelector('input[name="entry.YOUR_PRODUCT_ID_ENTRY_ID"]').value = productId;
+            form.querySelector('input[name="entry.YOUR_PRICE_ENTRY_ID"]').value = price;
 
-            // Redirect to UPI payment link
-            const upiLink = `upi://pay?pa=rajvendrarao@okhdfcbank&pn=${encodeURIComponent(name)}&mc=0000&tid=${productId}&amount=${price}&cu=INR&url=https://yourwebsite.com/thank-you`;
-            window.location.href = upiLink;
-
-            // Close the modal
-            closeModal();
+            // Submit the form
+            form.submit();
         }
 
         document.querySelector('.close').onclick = closeModal;
