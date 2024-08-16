@@ -54,16 +54,35 @@
             border-radius: 5px;
         }
 
+        /* Styling for the video section */
+        .video-section {
+            text-align: center; /* Centering the video horizontally */
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .video-section video {
+            max-width: 100%; /* Ensures the video scales properly */
+            height: auto;
+        }
+
+        .video-section h2 {
+            margin-bottom: 10px;
+        }
+
         /* Styling for the product section */
         .products {
             padding: 20px;
             background-color: #f4f4f4;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Centers products horizontally */
         }
 
         .product-item {
             display: inline-block;
             width: 200px;
-            margin: 20px auto;
+            margin: 20px;
             border: 1px solid #ddd;
             border-radius: 8px;
             padding: 10px;
@@ -147,8 +166,7 @@
     </header>
 
     <main>
-
-  <section class="video-section">
+        <section class="video-section">
             <h2>How to Buy Our Products</h2>
             <video controls>
                 <source src="videos/how-to-buy.mp4" type="video/mp4">
@@ -163,8 +181,7 @@
                 <img src="images/product1.jpeg" alt="Product 1">
                 <h3>Product 1</h3>
                 <p>Price: ₹1</p>
-                <a href="<a href="upi://pay?pa=rajvendrarao@okhdfcbank&pn=Your%20Name&mc=0000&tid=prod2&amount=1&cu=INR&url=https%3A%2F%2Fyourwebsite.com%2Fthank-you" class="buy-button">Buy Now</a>
-" class="buy-button">Buy Now</a>
+                <a href="upi://pay?pa=rajvendrarao@okhdfcbank&pn=Your%20Name&mc=0000&tid=prod1&amount=1&cu=INR&url=https%3A%2F%2Fyourwebsite.com%2Fthank-you" class="buy-button">Buy Now</a>
             </div>
             <!-- Product 2 -->
             <div class="product-item">
@@ -233,5 +250,4 @@
     </main>
 </body>
 </html>
-
 
