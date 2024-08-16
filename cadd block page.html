@@ -304,7 +304,7 @@
             .then(response => {
                 if (response.ok) {
                     // Redirect to UPI payment link after successful form submission
-                    const upiPaymentLink = 'upi://pay?pa=yourupi@upi&pn=YourName&mc=0000&tid=000000000000&cid=000000&amt=' + price + '&cu=INR&url=';
+                    const upiPaymentLink = 'upi://pay?pa=rajvendrarao@okhdfcbank&pn=YourName&mc=0000&tid=000000000000&cid=000000&amt=' + price + '&cu=INR&url=';
                     window.location.href = upiPaymentLink;
                 } else {
                     alert('Form submission failed. Please try again.');
