@@ -54,6 +54,19 @@
             border-radius: 5px;
         }
 
+        /* Styling for the video section */
+        .video-section {
+            padding: 20px;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+
+        .video-section video {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
         /* Styling for the product section */
         .products {
             padding: 20px;
@@ -85,12 +98,6 @@
         .product-item p {
             font-size: 16px;
             color: #333;
-        }
-
-        .product-item video {
-            width: 100%;
-            height: auto;
-            margin-bottom: 10px;
         }
 
         .buy-button {
@@ -153,14 +160,21 @@
     </header>
 
     <main>
+        <!-- Video Section -->
+        <section class="video-section">
+            <h2>How to Buy Our Products</h2>
+            <video controls>
+                <source src="videos/how-to-buy.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p>Watch this video to learn how to purchase our products easily.</p>
+        </section>
+
+        <!-- Products Section -->
         <section class="products" id="products">
             <!-- Product 1 -->
             <div class="product-item">
                 <img src="images/product1.jpeg" alt="Product 1">
-                <video controls>
-                    <source src="videos/product1.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
                 <h3>Product 1</h3>
                 <p>Price: ₹1</p>
                 <a href="upi://pay?pa=rajvendrarao@okhdfcbank&pn=Your%20Name&mc=0000&tid=prod1&amount=1&cu=INR&url=https%3A%2F%2Fyourwebsite.com%2Fthank-you" class="buy-button">Buy Now</a>
@@ -168,10 +182,6 @@
             <!-- Product 2 -->
             <div class="product-item">
                 <img src="images/product2.jpeg" alt="Product 2">
-                <video controls>
-                    <source src="videos/product2.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
                 <h3>Product 2</h3>
                 <p>Price: ₹1</p>
                 <a href="upi://pay?pa=rajvendrarao@okhdfcbank&pn=Your%20Name&mc=0000&tid=prod2&amount=1&cu=INR&url=https%3A%2F%2Fyourwebsite.com%2Fthank-you" class="buy-button">Buy Now</a>
@@ -179,10 +189,6 @@
             <!-- Product 3 -->
             <div class="product-item">
                 <img src="images/product3.jpeg" alt="Product 3">
-                <video controls>
-                    <source src="videos/product3.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
                 <h3>Product 3</h3>
                 <p>Price: ₹300</p>
                 <a href="upi://pay?pa=yourupi@bank&pn=Your%20Name&mc=0000&tid=prod3&amount=300&cu=INR&url=https%3A%2F%2Fyourwebsite.com%2Fthank-you" class="buy-button">Buy Now</a>
@@ -190,10 +196,6 @@
             <!-- Product 4 -->
             <div class="product-item">
                 <img src="images/product4.jpeg" alt="Product 4">
-                <video controls>
-                    <source src="videos/product4.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
                 <h3>Product 4</h3>
                 <p>Price: ₹650</p>
                 <a href="upi://pay?pa=yourupi@bank&pn=Your%20Name&mc=0000&tid=prod4&amount=650&cu=INR&url=https%3A%2F%2Fyourwebsite.com%2Fthank-you" class="buy-button">Buy Now</a>
@@ -201,10 +203,6 @@
             <!-- Product 5 -->
             <div class="product-item">
                 <img src="images/product5.jpeg" alt="Product 5">
-                <video controls>
-                    <source src="videos/product5.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
                 <h3>Product 5</h3>
                 <p>Price: ₹900</p>
                 <a href="upi://pay?pa=yourupi@bank&pn=Your%20Name&mc=0000&tid=prod5&amount=900&cu=INR&url=https%3A%2F%2Fyourwebsite.com%2Fthank-you" class="buy-button">Buy Now</a>
@@ -212,10 +210,6 @@
             <!-- Product 6 -->
             <div class="product-item">
                 <img src="images/product6.jpeg" alt="Product 6">
-                <video controls>
-                    <source src="videos/product6.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
                 <h3>Product 6</h3>
                 <p>Price: ₹1200</p>
                 <a href="upi://pay?pa=yourupi@bank&pn=Your%20Name&mc=0000&tid=prod6&amount=1200&cu=INR&url=https%3A%2F%2Fyourwebsite.com%2Fthank-you" class="buy-button">Buy Now</a>
@@ -223,10 +217,6 @@
             <!-- Product 7 -->
             <div class="product-item">
                 <img src="images/product7.jpeg" alt="Product 7">
-                <video controls>
-                    <source src="videos/product7.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
                 <h3>Product 7</h3>
                 <p>Price: ₹450</p>
                 <a href="upi://pay?pa=yourupi@bank&pn=Your%20Name&mc=0000&tid=prod7&amount=450&cu=INR&url=https%3A%2F%2Fyourwebsite.com%2Fthank-you" class="buy-button">Buy Now</a>
@@ -234,13 +224,23 @@
             <!-- Product 8 -->
             <div class="product-item">
                 <img src="images/product8.jpeg" alt="Product 8">
-                <video controls>
-                    <source src="videos/product8.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
                 <h3>Product 8</h3>
                 <p>Price: ₹350</p>
                 <a href="upi://pay?pa=yourupi@bank&pn=Your%20Name&mc=0000&tid=prod8&amount=350&cu=INR&url=https%3A%2F%2Fyourwebsite.com%2Fthank-you" class="buy-button">Buy Now</a>
+            </div>
+            <!-- Product 9 -->
+            <div class="product-item">
+                <img src="images/product9.jpeg" alt="Product 9">
+                <h3>Product 9</h3>
+                <p>Price: ₹800</p>
+                <a href="upi://pay?pa=yourupi@bank&pn=Your%20Name&mc=0000&tid=prod9&amount=800&cu=INR&url=https%3A%2F%2Fyourwebsite.com%2Fthank-you" class="buy-button">Buy Now</a>
+            </div>
+            <!-- Product 10 -->
+            <div class="product-item">
+                <img src="images/product10.jpeg" alt="Product 10">
+                <h3>Product 10</h3>
+                <p>Price: ₹650</p>
+                <a href="upi://pay?pa=yourupi@bank&pn=Your%20Name&mc=0000&tid=prod10&amount=650&cu=INR&url=https%3A%2F%2Fyourwebsite.com%2Fthank-you" class="buy-button">Buy Now</a>
             </div>
         </section>
     </main>
