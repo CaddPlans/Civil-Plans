@@ -60,6 +60,41 @@
             border-radius: 5px;
         }
 
+        /* Carousel styling */
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            max-height: 400px; /* Adjust as needed */
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-image {
+            min-width: 100%;
+            height: auto;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-control {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            font-size: 24px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
         /* Styling for the home page content */
         .home-content {
             padding: 20px;
@@ -76,13 +111,13 @@
 
         .home-content h1 {
             font-size: 36px;
-            margin-bottom: 20px;
+            margin-top: 40px;
         }
 
         .home-content p {
             font-size: 18px;
             color: #333;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         .button-container {
@@ -183,61 +218,103 @@
             <li><a href="#services" aria-label="Services">Services</a></li>
             <li><a href="#contact" aria-label="Contact">Contact</a></li>
             <li><a href="#products" aria-label="Products">Products</a></li>
-
         </ul>
     </nav>
 
+    <section class="carousel">
+        <div class="carousel-images">
+            <img src="carousel1.jpg" alt="Carousel Image 1" class="carousel-image">
+            <img src="carousel2.jpg" alt="Carousel Image 2" class="carousel-image">
+            <img src="carousel3.jpg" alt="Carousel Image 3" class="carousel-image">
+        </div>
+        <div class="carousel-controls">
+            <button class="carousel-control" id="prev">&lt;</button>
+            <button class="carousel-control" id="next">&gt;</button>
+        </div>
+    </section>
+
     <section class="home-content" id="home">
-        <img style="width: 100%;" src="heropic.png" alt="Hero Image">
- <h1 style="margin-top: 40px;" >Welcome to Cadd Plans</h1>
-        <p style="margin-bottom: 40px;" >Discover our range of high-quality services designed to meet your needs. Explore the options below to learn more about what we offer.</p>
+        <img class="full-width-image" src="heropic.png" alt="Hero Image">
+        <h1>Welcome to Cadd Plans</h1>
+        <p>Discover our range of high-quality services designed to meet your needs. Explore the options below to learn more about what we offer.</p>
 
         <div class="button-container">
             <div class="button-item">
                 <div class="button-label">3D FLOOR VIEW</div>
                 <a href="https://forms.gle/cdKpcZh9GtzgecVT8" class="button-text">
-                    <img src="3D FLOOR VIEW.jpg" alt="Cadd Blocks">
-                   VIEW MORE
+                    <img src="3D FLOOR VIEW.jpg" alt="3D Floor View">
+                    VIEW MORE
                 </a>
             </div>
             <div class="button-item">
                 <div class="button-label">3D ELEVATION</div>
                 <a href="#contact" class="button-text">
-                    <img src="3D ELEVATION.jpg" alt="Get in Touch">
+                    <img src="3D ELEVATION.jpg" alt="3D Elevation">
                     VIEW MORE
                 </a>
-
             </div>
             <div class="button-item">
                 <div class="button-label">2D GROUND FLOOR PLAN</div>
                 <a href="#services" class="button-text">
-                    <img src="2D GROUND FLOOR PLAN.jpg" alt="Explore Services">
+                    <img src="2D GROUND FLOOR PLAN.jpg" alt="2D Ground Floor Plan">
                     VIEW MORE
                 </a>
             </div>
             <div class="button-item">
                 <div class="button-label">2D G+1 PLAN</div>
                 <a href="#team" class="button-text">
-                    <img src="2D G+1 PLAN.jpg" alt="Meet the Team">
+                    <img src="2D G+1 PLAN.jpg" alt="2D G+1 Plan">
                     VIEW MORE
                 </a>
             </div>
             <div class="button-item">
                 <div class="button-label">CADD BLOCKS</div>
                 <a href="cadd block page.html" class="button-text">
-                    <img src="cadd block.jpeg" alt="View Portfolio">
-                   VIEW MORE
+                    <img src="cadd block.jpeg" alt="Cadd Blocks">
+                    VIEW MORE
                 </a>
             </div>
             <div class="button-item">
                 <div class="button-label">NEW SHORTCUTS FOR AUTOCADD</div>
                 <a href="#testimonials" class="button-text">
-                    <img src="auto cadd new shortcuts.jpeg" alt="Read Testimonials">
+                    <img src="auto cadd new shortcuts.jpeg" alt="New Shortcuts for AutoCAD">
                     VIEW MORE
                 </a>
             </div>
         </div>
     </section>
+
+    <script>
+        const carouselImages = document.querySelector('.carousel-images');
+        const carouselImagesCount = document.querySelectorAll('.carousel-image').length;
+        const nextButton = document.getElementById('next');
+        const prevButton = document.getElementById('prev');
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            if (index >= carouselImagesCount) {
+                currentIndex = 0;
+            } else if (index < 0) {
+                currentIndex = carouselImagesCount - 1;
+            } else {
+                currentIndex = index;
+            }
+            carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        nextButton.addEventListener('click', () => {
+            showSlide(currentIndex + 1);
+        });
+
+        prevButton.addEventListener('click', () => {
+            showSlide(currentIndex - 1);
+        });
+
+        // Auto-slide functionality
+        setInterval(() => {
+            showSlide(currentIndex + 1);
+        }, 3000); // Change image every 3 seconds
+    </script>
 </body>
 </html>
 
