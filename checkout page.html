@@ -45,9 +45,6 @@
             margin-bottom: 10px;
             display: block;
         }
-        .payment-options div {
-            margin-bottom: 10px;
-        }
         .checkout-button {
             background-color: #28a745;
             color: white;
@@ -159,16 +156,6 @@
                         <input type="text" id="upi-id" name="upi-id">
                     </div>
                 </div>
-                <div class="form-group">
-                    <input type="radio" id="digital-wallet" name="payment-method" value="digital-wallet">
-                    <label for="digital-wallet">Digital Wallet</label>
-                </div>
-                <div id="digital-wallet-details" style="display: none;">
-                    <div class="form-group">
-                        <label for="wallet-id">Digital Wallet ID</label>
-                        <input type="text" id="wallet-id" name="wallet-id">
-                    </div>
-                </div>
             </div>
 
             <button type="submit" class="checkout-button">Place Order</button>
@@ -176,11 +163,10 @@
     </div>
 
     <script>
-        // Show and hide payment method details based on selection
+        // Show and hide UPI details based on selection
         document.querySelectorAll('input[name="payment-method"]').forEach(radio => {
             radio.addEventListener('change', function() {
                 document.getElementById('upi-details').style.display = this.id === 'upi' ? 'block' : 'none';
-                document.getElementById('digital-wallet-details').style.display = this.id === 'digital-wallet' ? 'block' : 'none';
             });
         });
 
@@ -221,5 +207,3 @@
     </script>
 </body>
 </html>
-
-
