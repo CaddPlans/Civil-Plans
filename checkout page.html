@@ -162,16 +162,21 @@
             const formData = new FormData(this);
 
             // FormsFree API endpoint
-            const apiUrl = 'https://formspree.io/f/xdkndjwl'; // FormsFree URL
+            const apiUrl = 'https://formspree.io/f/xdkndjwl'; // Ensure this URL is correct
 
             // Send data to FormsFree API
             fetch(apiUrl, {
                 method: 'POST',
                 body: formData
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
             .then(result => {
-                if (result.success) {
+                if (result && result.ok) { // Adjust based on the actual response structure
                     alert('Order placed successfully!');
                     // Optionally, redirect or clear the form here
                     document.getElementById('checkout-form').reset();
@@ -179,7 +184,8 @@
                     alert('Order submission failed.');
                 }
             })
-            .catch(() => {
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
                 alert('There was an error submitting your form.');
             });
         });
