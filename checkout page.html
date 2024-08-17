@@ -38,26 +38,6 @@
             border: 1px solid #ddd;
             border-radius: 4px;
         }
-        .order-summary {
-            margin-top: 20px;
-            padding: 10px;
-            background: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        .order-summary h2 {
-            margin-top: 0;
-        }
-        .order-summary .summary-item {
-            margin-bottom: 10px;
-        }
-        .order-summary .summary-item span {
-            display: block;
-        }
-        .order-summary .total {
-            font-weight: bold;
-            font-size: 1.2em;
-        }
         .payment-options {
             margin-top: 20px;
         }
@@ -147,67 +127,22 @@
             <div class="payment-options">
                 <h2>Payment Method</h2>
                 <div class="form-group">
-                    <input type="radio" id="credit-card" name="payment-method" value="credit-card" required>
-                    <label for="credit-card">Credit Card</label>
-                </div>
-                <div class="form-group">
-                    <input type="radio" id="upi" name="payment-method" value="upi" required>
+                    <input type="radio" id="upi" name="payment-method" value="upi" required checked>
                     <label for="upi">UPI (Unified Payments Interface)</label>
                 </div>
-
-                <div id="credit-card-details" class="payment-details">
-                    <div class="form-group">
-                        <label for="card-number">Credit Card Number</label>
-                        <input type="text" id="card-number" name="card-number">
-                    </div>
-                    <div class="form-group">
-                        <label for="card-expiry">Expiration Date</label>
-                        <input type="text" id="card-expiry" name="card-expiry" placeholder="MM/YY">
-                    </div>
-                    <div class="form-group">
-                        <label for="card-cvc">CVC</label>
-                        <input type="text" id="card-cvc" name="card-cvc">
-                    </div>
-                </div>
-
-                <div id="upi-details" class="payment-details" style="display: none;">
+                <div id="upi-details">
                     <div class="form-group">
                         <label for="upi-id">UPI ID</label>
-                        <input type="text" id="upi-id" name="upi-id">
+                        <input type="text" id="upi-id" name="upi-id" required>
                     </div>
                 </div>
             </div>
 
-            <div class="order-summary">
-                <h2>Order Summary</h2>
-                <div class="summary-item">
-                    <span>Item 1: ₹1000.00</span>
-                    <span>Item 2: ₹2000.00</span>
-                </div>
-                <div class="summary-item total">
-                    <span>Total: ₹3000.00</span>
-                </div>
-            </div>
             <button type="submit" class="checkout-button">Place Order</button>
         </form>
     </div>
 
     <script>
-        document.querySelectorAll('input[name="payment-method"]').forEach(function(element) {
-            element.addEventListener('change', function() {
-                var creditCardDetails = document.getElementById('credit-card-details');
-                var upiDetails = document.getElementById('upi-details');
-                
-                if (this.value === 'credit-card') {
-                    creditCardDetails.style.display = 'block';
-                    upiDetails.style.display = 'none';
-                } else if (this.value === 'upi') {
-                    creditCardDetails.style.display = 'none';
-                    upiDetails.style.display = 'block';
-                }
-            });
-        });
-
         document.getElementById('checkout-form').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent the default form submission
 
@@ -238,11 +173,10 @@
                     // Optionally, redirect or clear the form here
                     document.getElementById('checkout-form').reset();
                 } else {
-                    alert('There was a problem placing your order.');
+                    alert('Order submission failed.');
                 }
             })
-            .catch(error => {
-                console.error('Error:', error);
+            .catch(() => {
                 alert('There was an error submitting your form.');
             });
         });
