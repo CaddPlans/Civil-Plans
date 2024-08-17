@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            margin-top: 0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .order-summary {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .order-summary h2 {
+            margin-top: 0;
+        }
+        .order-summary .summary-item {
+            margin-bottom: 10px;
+        }
+        .order-summary .summary-item span {
+            display: block;
+        }
+        .order-summary .total {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        .payment-options {
+            margin-top: 20px;
+        }
+        .payment-options label {
+            margin-bottom: 10px;
+            display: block;
+        }
+        .checkout-button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .checkout-button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Checkout</h1>
+        <form id="checkout-form">
+            <div class="form-group">
+                <label for="full-name">Full Name</label>
+                <input type="text" id="full-name" name="full-name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Shipping Address</label>
+                <textarea id="address" name="address" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" required>
+            </div>
+            <div class="form-group">
+                <label for="state">State</label>
+                <select id="state" name="state" required>
+                    <option value="">Select State</option>
+                    <option value="ap">Andhra Pradesh</option>
+                    <option value="ar">Arunachal Pradesh</option>
+                    <option value="as">Assam</option>
+                    <option value="br">Bihar</option>
+                    <option value="ch">Chandigarh</option>
+                    <option value="ct">Chhattisgarh</option>
+                    <option value="dn">Dadra and Nagar Haveli and Daman and Diu</option>
+                    <option value="dd">Daman and Diu</option>
+                    <option value="dl">Delhi</option>
+                    <option value="go">Goa</option>
+                    <option value="gu">Gujarat</option>
+                    <option value="hb">Haryana</option>
+                    <option value="hp">Himachal Pradesh</option>
+                    <option value="jh">Jharkhand</option>
+                    <option value="ka">Karnataka</option>
+                    <option value="kl">Kerala</option>
+                    <option value="la">Ladakh</option>
+                    <option value="ld">Lakshadweep</option>
+                    <option value="mp">Madhya Pradesh</option>
+                    <option value="mh">Maharashtra</option>
+                    <option value="man">Manipur</option>
+                    <option value="me">Meghalaya</option>
+                    <option value="miz">Mizoram</option>
+                    <option value="nag">Nagaland</option>
+                    <option value="or">Odisha</option>
+                    <option value="pb">Punjab</option>
+                    <option value="rj">Rajasthan</option>
+                    <option value="sk">Sikkim</option>
+                    <option value="tn">Tamil Nadu</option>
+                    <option value="tg">Telangana</option>
+                    <option value="tr">Tripura</option>
+                    <option value="up">Uttar Pradesh</option>
+                    <option value="ut">Uttarakhand</option>
+                    <option value="wb">West Bengal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="pincode">Pincode</label>
+                <input type="text" id="pincode" name="pincode" required>
+            </div>
+
+            <div class="payment-options">
+                <h2>Payment Method</h2>
+                <div class="form-group">
+                    <input type="radio" id="credit-card" name="payment-method" value="credit-card" required>
+                    <label for="credit-card">Credit Card</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="upi" name="payment-method" value="upi" required>
+                    <label for="upi">UPI (Unified Payments Interface)</label>
+                </div>
+
+                <div id="credit-card-details" class="payment-details">
+                    <div class="form-group">
+                        <label for="card-number">Credit Card Number</label>
+                        <input type="text" id="card-number" name="card-number">
+                    </div>
+                    <div class="form-group">
+                        <label for="card-expiry">Expiration Date</label>
+                        <input type="text" id="card-expiry" name="card-expiry" placeholder="MM/YY">
+                    </div>
+                    <div class="form-group">
+                        <label for="card-cvc">CVC</label>
+                        <input type="text" id="card-cvc" name="card-cvc">
+                    </div>
+                </div>
+
+                <div id="upi-details" class="payment-details" style="display: none;">
+                    <div class="form-group">
+                        <label for="upi-id">UPI ID</label>
+                        <input type="text" id="upi-id" name="upi-id">
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-summary">
+                <h2>Order Summary</h2>
+                <div class="summary-item">
+                    <span>Item 1: ₹1000.00</span>
+                    <span>Item 2: ₹2000.00</span>
+                </div>
+                <div class="summary-item total">
+                    <span>Total: ₹3000.00</span>
+                </div>
+            </div>
+            <button type="submit" class="checkout-button">Place Order</button>
+        </form>
+    </div>
+
+    <script>
+        document.querySelectorAll('input[name="payment-method"]').forEach(function(element) {
+            element.addEventListener('change', function() {
+                var creditCardDetails = document.getElementById('credit-card-details');
+                var upiDetails = document.getElementById('upi-details');
+                
+                if (this.value === 'credit-card') {
+                    creditCardDetails.style.display = 'block';
+                    upiDetails.style.display = 'none';
+                } else if (this.value === 'upi') {
+                    creditCardDetails.style.display = 'none';
+                    upiDetails.style.display = 'block';
+                }
+            });
+        });
+
+        document.getElementById('checkout-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Collect form data
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            // Your FormsFree API endpoint and API key
+            const apiUrl = 'https://api.formsfree.com/submit'; // Replace with the actual API URL
+            const apiKey = 'your-api-key'; // Replace with your actual API key
+
+            // Send data to FormsFree API
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${apiKey}`
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    alert('Order placed successfully!');
+                    // Optionally, redirect or clear the form here
+                    document.getElementById('checkout-form').reset();
+                } else {
+                    alert('There was a problem placing your order.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting your form.');
+            });
+        });
+    </script>
+</body>
+</html>
