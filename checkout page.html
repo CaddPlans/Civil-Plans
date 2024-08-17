@@ -45,6 +45,9 @@
             margin-bottom: 10px;
             display: block;
         }
+        .payment-options div {
+            margin-bottom: 10px;
+        }
         .checkout-button {
             background-color: #28a745;
             color: white;
@@ -143,13 +146,27 @@
             <div class="payment-options">
                 <h2>Payment Method</h2>
                 <div class="form-group">
-                    <input type="radio" id="upi" name="payment-method" value="upi" required checked>
+                    <input type="radio" id="cash" name="payment-method" value="cash" required>
+                    <label for="cash">Cash on Delivery</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="upi" name="payment-method" value="upi">
                     <label for="upi">UPI (Unified Payments Interface)</label>
                 </div>
-                <div id="upi-details">
+                <div id="upi-details" style="display: none;">
                     <div class="form-group">
                         <label for="upi-id">UPI ID</label>
-                        <input type="text" id="upi-id" name="upi-id" required>
+                        <input type="text" id="upi-id" name="upi-id">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="digital-wallet" name="payment-method" value="digital-wallet">
+                    <label for="digital-wallet">Digital Wallet</label>
+                </div>
+                <div id="digital-wallet-details" style="display: none;">
+                    <div class="form-group">
+                        <label for="wallet-id">Digital Wallet ID</label>
+                        <input type="text" id="wallet-id" name="wallet-id">
                     </div>
                 </div>
             </div>
@@ -159,6 +176,14 @@
     </div>
 
     <script>
+        // Show and hide payment method details based on selection
+        document.querySelectorAll('input[name="payment-method"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('upi-details').style.display = this.id === 'upi' ? 'block' : 'none';
+                document.getElementById('digital-wallet-details').style.display = this.id === 'digital-wallet' ? 'block' : 'none';
+            });
+        });
+
         document.getElementById('checkout-form').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent the default form submission
 
@@ -196,4 +221,5 @@
     </script>
 </body>
 </html>
+
 
