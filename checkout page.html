@@ -38,6 +38,9 @@
             border: 1px solid #ddd;
             border-radius: 4px;
         }
+        .form-group input[type="file"] {
+            border: none;
+        }
         .payment-options {
             margin-top: 20px;
         }
@@ -62,7 +65,7 @@
 <body>
     <div class="container">
         <h1>Checkout</h1>
-        <form id="checkout-form">
+        <form id="checkout-form" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="full-name">Full Name</label>
                 <input type="text" id="full-name" name="full-name" required>
@@ -70,6 +73,10 @@
             <div class="form-group">
                 <label for="email">Email Address</label>
                 <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="mobile">Mobile Number</label>
+                <input type="tel" id="mobile" name="mobile" required>
             </div>
             <div class="form-group">
                 <label for="address">Shipping Address</label>
@@ -124,6 +131,11 @@
                 <input type="text" id="pincode" name="pincode" required>
             </div>
 
+            <div class="form-group">
+                <label for="image-upload">Upload Image</label>
+                <input type="file" id="image-upload" name="image-upload" accept="image/*">
+            </div>
+
             <div class="payment-options">
                 <h2>Payment Method</h2>
                 <div class="form-group">
@@ -148,10 +160,6 @@
 
             // Collect form data
             const formData = new FormData(this);
-            const data = {};
-            formData.forEach((value, key) => {
-                data[key] = value;
-            });
 
             // FormsFree API endpoint
             const apiUrl = 'https://formspree.io/f/xdkndjwl'; // FormsFree URL
@@ -159,10 +167,7 @@
             // Send data to FormsFree API
             fetch(apiUrl, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
+                body: formData
             })
             .then(response => response.json())
             .then(result => {
