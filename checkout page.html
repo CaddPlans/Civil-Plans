@@ -38,9 +38,6 @@
             border: 1px solid #ddd;
             border-radius: 4px;
         }
-        .form-group input[type="file"] {
-            border: none;
-        }
         .payment-options {
             margin-top: 20px;
         }
@@ -60,6 +57,12 @@
         .checkout-button:hover {
             background-color: #218838;
         }
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 15px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -76,7 +79,7 @@
             </div>
             <div class="form-group">
                 <label for="mobile">Mobile Number</label>
-                <input type="tel" id="mobile" name="mobile" required>
+                <input type="tel" id="mobile" name="mobile" required pattern="[0-9]{10}">
             </div>
             <div class="form-group">
                 <label for="address">Shipping Address</label>
@@ -128,12 +131,7 @@
             </div>
             <div class="form-group">
                 <label for="pincode">Pincode</label>
-                <input type="text" id="pincode" name="pincode" required>
-            </div>
-
-            <div class="form-group">
-                <label for="image-upload">Upload Image</label>
-                <input type="file" id="image-upload" name="image-upload" accept="image/*">
+                <input type="text" id="pincode" name="pincode" required pattern="[0-9]{6}">
             </div>
 
             <div class="payment-options">
@@ -192,3 +190,4 @@
     </script>
 </body>
 </html>
+
