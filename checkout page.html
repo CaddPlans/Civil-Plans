@@ -134,6 +134,12 @@
                 <input type="text" id="pincode" name="pincode" required pattern="[0-9]{6}">
             </div>
 
+            <!-- New Product ID Field -->
+            <div class="form-group">
+                <label for="product-id">Product ID</label>
+                <input type="text" id="product-id" name="product-id" required>
+            </div>
+
             <div class="payment-options">
                 <h2>Payment Method</h2>
                 <div class="form-group">
@@ -184,7 +190,7 @@
             })
             .catch(error => {
                 console.error('There was a problem with the fetch operation:', error);
-                alert('order placed sucessfully you will receive the payment notification.');
+                alert('Order placed successfully. You will receive the payment notification.');
             });
         });
     </script>
