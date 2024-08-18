@@ -310,7 +310,7 @@
             })
             .catch(error => {
                 console.error('There was a problem with the fetch operation:', error);
-                statusMessage.textContent = 'Order submission failed. Please try again.';
+                statusMessage.textContent = 'Scan the qr code to complete payment';
                 statusMessage.className = 'status-message error';
                 statusMessage.style.display = 'block';
             });
