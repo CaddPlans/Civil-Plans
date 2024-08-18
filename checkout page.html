@@ -57,6 +57,12 @@
         .checkout-button:hover {
             background-color: #218838;
         }
+        .loading {
+            display: none;
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
         @media (max-width: 768px) {
             .container {
                 width: 95%;
@@ -81,18 +87,35 @@
             border-radius: 8px;
             text-align: center;
             position: relative;
+            max-width: 90%;
+            max-height: 80%;
         }
         .popup-content img {
             max-width: 100%;
             height: auto;
+            max-height: 400px; /* Adjust this value as needed */
         }
         .popup-close {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 10px;
+            right: 10px;
             cursor: pointer;
             font-size: 1.5em;
             color: #333;
+        }
+        .popup-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 15px;
+            text-decoration: none;
+        }
+        .popup-button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -102,27 +125,27 @@
         <form id="checkout-form" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="full-name">Full Name</label>
-                <input type="text" id="full-name" name="full-name" required>
+                <input type="text" id="full-name" name="full-name" required aria-label="Full Name">
             </div>
             <div class="form-group">
                 <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" required aria-label="Email Address">
             </div>
             <div class="form-group">
                 <label for="mobile">Mobile Number</label>
-                <input type="tel" id="mobile" name="mobile" required pattern="[0-9]{10}">
+                <input type="tel" id="mobile" name="mobile" required pattern="[0-9]{10}" minlength="10" aria-label="Mobile Number">
             </div>
             <div class="form-group">
                 <label for="address">Shipping Address</label>
-                <textarea id="address" name="address" rows="4" required></textarea>
+                <textarea id="address" name="address" rows="4" required aria-label="Shipping Address"></textarea>
             </div>
             <div class="form-group">
                 <label for="city">City</label>
-                <input type="text" id="city" name="city" required>
+                <input type="text" id="city" name="city" required aria-label="City">
             </div>
             <div class="form-group">
                 <label for="state">State</label>
-                <select id="state" name="state" required>
+                <select id="state" name="state" required aria-label="State">
                     <option value="">Select State</option>
                     <option value="ap">Andhra Pradesh</option>
                     <option value="ar">Arunachal Pradesh</option>
@@ -162,28 +185,28 @@
             </div>
             <div class="form-group">
                 <label for="pincode">Pincode</label>
-                <input type="text" id="pincode" name="pincode" required pattern="[0-9]{6}">
+                <input type="text" id="pincode" name="pincode" required pattern="[0-9]{6}" minlength="6" aria-label="Pincode">
             </div>
 
             <div class="form-group">
                 <label for="product-id">Product ID</label>
-                <input type="text" id="product-id" name="product-id" required>
+                <input type="text" id="product-id" name="product-id" required aria-label="Product ID">
             </div>
 
             <div class="payment-options">
                 <h2>Payment Method</h2>
                 <div class="form-group">
-                    <input type="radio" id="cash" name="payment-method" value="cash" required>
+                    <input type="radio" id="cash" name="payment-method" value="cash" required aria-label="Cash on Delivery">
                     <label for="cash">Cash on Delivery</label>
                 </div>
                 <div class="form-group">
-                    <input type="radio" id="upi" name="payment-method" value="upi">
+                    <input type="radio" id="upi" name="payment-method" value="upi" aria-label="UPI">
                     <label for="upi">UPI (Unified Payments Interface)</label>
                 </div>
                 <div id="upi-details" style="display: none;">
                     <div class="form-group">
                         <label for="upi-id">UPI ID</label>
-                        <input type="text" id="upi-id" name="upi-id">
+                        <input type="text" id="upi-id" name="upi-id" aria-label="UPI ID">
                     </div>
                 </div>
             </div>
@@ -194,9 +217,10 @@
 
     <!-- Popup -->
     <div id="popup" class="popup">
-        <div class="popup-content">
-            <span id="popup-close" class="popup-close">&times;</span>
+        <div class="popup-content" role="dialog" aria-labelledby="popup-title" aria-describedby="popup-description">
+            <span id="popup-close" class="popup-close" aria-label="Close">&times;</span>
             <img id="popup-image" src="" alt="Product Image">
+            <button id="popup-button" class="popup-button">Go to Link</button>
         </div>
     </div>
 
@@ -227,6 +251,7 @@
             const popup = document.getElementById('popup');
             const popupImage = document.getElementById('popup-image');
             const popupClose = document.getElementById('popup-close');
+            const popupButton = document.getElementById('popup-button');
 
             // Check if the entered product ID matches any image URL
             if (imageUrls[productId]) {
@@ -238,6 +263,10 @@
 
             popupClose.addEventListener('click', function() {
                 popup.style.display = 'none';
+            });
+
+            popupButton.addEventListener('click', function() {
+                window.location.href = 'https://example.com'; // Replace with your desired link
             });
 
             // Send form data to API
@@ -269,3 +298,4 @@
     </script>
 </body>
 </html>
+
